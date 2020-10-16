@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CSS Website Layout</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    </head>
+    <body>
+
+        <div class="header">
+            <div class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
+            <a href="#news">Clasificación 2020</a>
+            <a href="#contact">Galeria</a>
+            <a href="#about">Inscripciones</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+            </a>
+            </div>
+            <button type="button">INSCRÍBETE!</button>        
+        </div>
+
+        <div class="row">
+            <h1>Próxima carrera 00d:00h:00s</h1>
+        </div>
+
+        <div class="row2">
+            <div class="para_presentacion">
+            <img  src="images/img_presentacion.jpg" alt="F1_Championship_Presentacion">
+            <h2> Presentación</h2> <p>    
+            Bienvenido a la página web de F1 Online Drivers, nos dedicamos a organizar 
+            carreras semanales o cada dos semanas de manera online. Para participar solamente
+            deberás de ser mayor de edad y registrarte. En esta página web podrás ver cuando es 
+            la próxima carrera y en que puesto de la clasficiación de todos los corredores te encuentras.
+            Una vez acabado el campeonato mundial, el jugador que esté más arriba de la clasficación ganará 300€.
+            <p>
+            </div>
+        </div>
+        <div class="row3">
+        <button type="button">CLASIFICACIÓN</button> 
+        </div>
+        <div class="row4">
+            <h2>NOTICIAS</h2>
+            <div class="row4_1">
+                <img  src="images/img_row4_1.jpg" alt="F1_Ro4_img1">
+                <p>Monza se convertirá en el escenario de la próxima carrera, ya sólo quedan 4 días para este evento.</p>
+            </div>
+            <div class="row4_2">
+                <img  src="images/img_row4_2.jpg" alt="F1_Ro4_img2">
+                <p>Antonio Giovinazzi nos revela cuáles son los trucos para ser un mejor piloto.</p>
+            </div>
+            <div class="row4_3">
+                <img  src="images/img_row4_3.jpg" alt="F1_Ro4_img3">
+                <p>Dani Clos estará corriendo la próxima carrera online en Monza.</p>
+            </div>
+        </div>
+        <footer class="footer-distributed">
+ 
+		<div class="footer-left">
+ 
+		<h3>F1 Online</h3>
+ 
+		<p class="footer-links">
+		<a href="#">Home</a>
+	·
+		<a href="#">Sobre nosotros</a>
+	·
+		<a href="#">FAQ</a>
+	·
+		<a href="#">Contacto</a>
+		</p>
+ 
+		<p class="footer-company-name">F1Online &copy; 2020</p>
+		</div>
+ 
+		<div class="footer-center">
+ 
+		<div>
+		<i class="fa fa-map-marker"></i>
+		<p><span>Av. Mare de Déu de Bellvitge</span> Hospitalet, Barcelona</p>
+		</div>
+ 
+		<div>
+		<i class="fa fa-phone"></i>
+		<p>+34 612 345 678</p>
+		</div>
+ 
+		<div>
+		<i class="fa fa-envelope"></i>
+		<p><a href="mailto:support@company.com">contact@f1online.com</a></p>
+		</div>
+ 
+		</div>
+ 
+		<div class="footer-right">
+ 
+		<p class="footer-company-about">
+		<span>Sobre nosotros</span>
+        Somos la principal competición automovilística de España, súmate!
+		</p>
+ 
+		<div class="footer-icons">
+ 
+		<a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+ 
+		</div>
+ 
+		</div>
+ 
+        </footer>
+        <script>
+        function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+        }
+        </script>
+    </body>
+</html>
+    
