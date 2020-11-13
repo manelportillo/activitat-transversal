@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <script src="../js/code.js"></script>
+  <script src="../js/code_prueba.js"></script>
 <style>
 input[type=text],[type=email],[type=date], select {
   width: 100%;
@@ -39,6 +39,7 @@ div {
 
 <div>
   <form action="../model/insertar_form.php" method="POST" onsubmit="return validacionForm()">
+
     <label for="dni" id="dni_label"></label>
     <input type="text" id="dni" name="dni" placeholder="DNI">
 
@@ -78,9 +79,11 @@ div {
       }
       ?>
     </select>
-    <input type="submit" value="Inscribirse" id="error">
+    <input type="submit" value="submit" id="error">
     <div id="mensaje"></div>
+
   </form>
+  
 </div>
 
 </body>
