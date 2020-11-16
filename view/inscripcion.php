@@ -1,3 +1,8 @@
+<?php
+if (isset($_GET["variable1"])){
+  echo '<script> usuarioExistente(); </script>';
+}
+?>
 <!DOCTYPE html>
 <html>
   <script src="../js/code_prueba.js"></script>
@@ -70,11 +75,7 @@ require_once '../model/inscripcionDAO.php';
       <div id="mensaje"></div>
     </form>
 </div>
-<?php
-if (isset($_GET["variable1"])){
-  echo '<script> usuarioExistente(); </script>';
-}
-?>
+
  <footer class="footer-distributed">
  
  <div class="footer-left">

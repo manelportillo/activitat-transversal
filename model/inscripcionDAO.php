@@ -5,12 +5,13 @@ class inscripcionDAO{
 
         public function __construct()
         {
-            require_once 'conexion.php';
+            include 'conexion.php';
             $this->pdo=$pdo;
         }
     
 
     public function inscribirse(){
+        include_once 'conexion.php';
         $dni = $_POST['dni'];
         $nombre = $_POST['nombre'];
         $primer_apellido = $_POST['primer_apellido'];
@@ -29,8 +30,8 @@ class inscripcionDAO{
         $result=$sentencia->fetch(PDO::FETCH_ASSOC);
         $numRow=$sentencia->rowCount();
 
-        if(!empty($numRow) && $numRow==1){   
-            header('Location: ../view/inscripcion.php?variable1=1');
+        if($numRow==1){ 
+            header('Location:../view/inscripcion.php');
         }else{  
             try{
                 $this->pdo->beginTransaction(); 
