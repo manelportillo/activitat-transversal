@@ -1,3 +1,8 @@
+function usuarioExistente(){
+    document.getElementById("usuarioExistente").className = "usuarioExistenteVisible";
+
+}
+
 function validacionForm() {
     var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
     var dni=document.getElementById('dni').value;
@@ -18,11 +23,8 @@ function validacionForm() {
     // alert(sexo);
     // alert(categoria);
     if (dni == ''){      
-        document.getElementById('dni_label').style.color="red";
         document.getElementById('dni').style.border = "2px solid red";       
-
     }
-
     if(!(letras[dni.substr(0,8)%23]===dni.substr(-1,1))){
         document.getElementById('dni').style.border = "2px solid red";
         }
@@ -45,14 +47,43 @@ function validacionForm() {
         
         document.getElementById('sexo').style.border = "2px solid red";  
         }
-    if(categoria == ""){
-        
-        document.getElementById('dni_label').style.color="red";
+    if(categoria == ""){      
         document.getElementById('categoria').style.border = "2px solid red";  
     }
-
-    if (dni == "" || nombre == "" || primer_apellido == "" || segundo_apellido == "" || mail == "" || fecha_nacimiento == "" || sexo == "" || categoria == "" || !letras[dni.substr(0,8)%23]===dni.substr(-1,1)){
+    if (dni != ''){      
+        document.getElementById('dni').style.border = "2px solid grey";       
+    }
+    if(letras[dni.substr(0,8)%23]===dni.substr(-1,1)){
+        document.getElementById('dni').style.border = "2px solid grey";
+        }
+    if(nombre != ""){
+        document.getElementById('nombre').style.border = "2px solid grey";  
+        }
+    if(primer_apellido != ""){
+        document.getElementById('primer_apellido').style.border = "2px solid grey";  
+        }
+    if(segundo_apellido != ""){
+        document.getElementById('segundo_apellido').style.border = "2px solid grey";  
+        }
+    if(mail != ""){
+        document.getElementById('mail').style.border = "2px solid grey";  
+        }
+    if(fecha_nacimiento !=""){
+        document.getElementById('fecha_nacimiento').style.border = "2px solid grey";  
+        }
+    if( sexo != ""){
+        
+        document.getElementById('sexo').style.border = "2px solid grey";  
+        }
+    if(categoria != ""){      
+        document.getElementById('categoria').style.border = "2px solid grey";  
+    }
+    if (dni == "" || nombre == "" || primer_apellido == "" || segundo_apellido == "" || mail == "" || fecha_nacimiento == "" || sexo == "" || categoria == ""){
         document.getElementById('dni_label').innerHTML="<p>Falta introducir datos</p>";
+        document.getElementById('dni_label').style.color="red";
+        return false;
+    }else if(!(letras[dni.substr(0,8)%23]===dni.substr(-1,1))){
+        document.getElementById('dni_label').innerHTML="<p>DNI Incorrecto</p>";
         document.getElementById('dni_label').style.color="red";
         return false;
     }else{

@@ -1,4 +1,5 @@
 <?php
+echo '<script src="../js/code_prueba.js"></script>';
 require_once '../model/conexion.php';
 $dni = $_POST['dni'];
 $nombre = $_POST['nombre'];
@@ -27,9 +28,8 @@ $sentencia->execute();
 $result=$sentencia->fetch(PDO::FETCH_ASSOC);
 $numRow=$sentencia->rowCount();
 
-if(!empty($numRow) && $numRow==1){
-
-    echo "El participante ya existe";
+if(!empty($numRow) && $numRow==1){   
+    header('Location: ../view/inscripcion.php?variable1=1');
 }else{  
     try{
         $pdo->beginTransaction(); 
