@@ -18,10 +18,14 @@
   </a>
   </div>      
 </div>
+<?php
+require_once '../model/inscripcionDAO.php';
+
+?>
 <div>
   <img class="imgCorredor" src="../images/corredor.png">
-    <p id="usuarioExistente" class="usuarioExistente" "> El usuario ya está inscrito </p>
-    <form action="../model/insertar_form.php" method="POST" onsubmit="return validacionForm()">
+    <p id="usuarioExistente" class="usuarioExistente"> El usuario ya está inscrito </p>
+    <form action="inscripcion.php" method="POST" onsubmit="return validacionForm()">
     <h3>Formulario de inscripción</h3>
       <label for="dni" id="dni_label"></label>
       <input class="dni" type="text" id="dni" name="dni" placeholder="DNI">
@@ -138,4 +142,10 @@ if (isset($_GET["variable1"])){
      }
      </script>
 </body>
+<?php
+$inscripcionDAO=new inscripcionDAO();
+if (isset($_POST['dni'])){
+  $inscripcionDAO->inscribirse();
+}
+?>
 </html>
