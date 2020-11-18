@@ -31,7 +31,7 @@ class inscripcionDAO{
         $numRow=$sentencia->rowCount();
 
         if($numRow==1){ 
-            header('Location:../view/inscripcion.php');
+            header('Location:../view/inscripcion.php?variable1=1');
         }else{  
             try{
                 $this->pdo->beginTransaction(); 

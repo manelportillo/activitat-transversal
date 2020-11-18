@@ -1,6 +1,5 @@
 function usuarioExistente(){
     document.getElementById("usuarioExistente").className = "usuarioExistenteVisible";
-
 }
 
 function validacionForm() {

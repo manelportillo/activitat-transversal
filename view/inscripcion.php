@@ -1,8 +1,4 @@
-<?php
-if (isset($_GET["variable1"])){
-  echo '<script> usuarioExistente(); </script>';
-}
-?>
+
 <!DOCTYPE html>
 <html>
   <script src="../js/code_prueba.js"></script>
@@ -28,8 +24,7 @@ require_once '../model/inscripcionDAO.php';
 
 ?>
 <div>
-  <img class="imgCorredor" src="../images/corredor.png">
-    <p id="usuarioExistente" class="usuarioExistente"> El usuario ya está inscrito </p>
+  <img class="imgCorredor" src="../images/corredor.png"> 
     <form action="inscripcion.php" method="POST" onsubmit="return validacionForm()">
     <h3>Formulario de inscripción</h3>
       <label for="dni" id="dni_label"></label>
@@ -73,6 +68,7 @@ require_once '../model/inscripcionDAO.php';
       </select>
       <input type="submit" value="Inscribirse" id="error">
       <div id="mensaje"></div>
+      <p id="usuarioExistente" class="usuarioExistente"> El usuario ya está inscrito </p>
     </form>
 </div>
 
@@ -80,7 +76,7 @@ require_once '../model/inscripcionDAO.php';
  
  <div class="footer-left">
 
- <h3>F1 Online</h3>
+ <h3>Cursa</h3>
 
  <p class="footer-links">
  <a href="#">Home</a>
@@ -92,7 +88,7 @@ require_once '../model/inscripcionDAO.php';
  <a href="#">Contacto</a>
  </p>
 
- <p class="footer-company-name">F1Online &copy; 2020</p>
+ <p class="footer-company-name">Cursa &copy; 2021</p>
  </div>
 
  <div class="footer-center">
@@ -109,7 +105,7 @@ require_once '../model/inscripcionDAO.php';
 
  <div>
  <i class="fa fa-envelope"></i>
- <p><a href="mailto:support@company.com">contact@f1online.com</a></p>
+ <p><a href="mailto:support@company.com">contact@cursa.com</a></p>
  </div>
 
  </div>
@@ -118,7 +114,7 @@ require_once '../model/inscripcionDAO.php';
 
  <p class="footer-company-about">
  <span>Sobre nosotros</span>
-     Somos la principal competición automovilística de España, súmate!
+     Somos la principal carrera de 2021 en España, súmate!
  </p>
 
  <div class="footer-icons">
@@ -147,6 +143,9 @@ require_once '../model/inscripcionDAO.php';
 $inscripcionDAO=new inscripcionDAO();
 if (isset($_POST['dni'])){
   $inscripcionDAO->inscribirse();
+}
+if (isset($_GET["variable1"])){
+  echo '<script> usuarioExistente(); </script>';
 }
 ?>
 </html>
