@@ -3,12 +3,10 @@ function usuarioExistente(){
     document.getElementById("usuarioExistente").className="usuarioExistenteVisible";
 }
 
-function validacionForm(){
+function validacionForm(event){
     // alert('hola');
-
     var inputs = document.getElementsByTagName("input");
     var vali = true;
-    var cate = true;
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].type == 'text' && inputs[i].value == '') {
             inputs[i].style.borderColor = 'red';
@@ -27,17 +25,14 @@ function validacionForm(){
             document.getElementById("mensaje2").style.color="red";
         } else {
             inputs[i].style.borderColor = 'grey';
-            document.getElementById("mensaje2").innerHTML="<p>Faltan datos por introducir</p>";
+           
         }
         // console.log(inputs[i].type);
     }
         if (!validarDNI() || !vali) {
             event.preventDefault()
         }
-        if (!categoria() || !cate) {
-            event.preventDefault()
-        }
-    
+
 }
 
 function categoria(){
@@ -99,7 +94,11 @@ function validarDNI() {
         document.getElementById('dni').style.border = "1px solid red";
         document.getElementById("mensaje1").innerHTML="<p>DNI Incorrecto</p>";
         document.getElementById("mensaje1").style.color="red";
+    }else{
+        document.getElementById("mensaje1").innerHTML="";
+        document.getElementById('dni').style.border = "1px solid grey";
+        return true;
+
     }
-    console.log("pierde el foco");
     
 }

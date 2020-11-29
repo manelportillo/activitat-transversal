@@ -19,12 +19,23 @@
   </a>
   </div>      
 </div>
+<?php
+        require_once '../model/inscripcionDAO.php';
+        require_once '../model/conexion.php';
+
+        $inscripcionDAO=new inscripcionDAO();
+        if (isset($_POST['dni'])){
+          $inscripcionDAO->inscribirse();
+          // header('Location:../view/inscripcion.php');
+        }
+
+?>
 <div>
   <img class="imgCorredor" src="../images/corredor.png"> 
-    <form action="inscripcion.php" method="POST" onsubmit="return validacionForm()">
+    <form action="inscripcion.php" method="POST" onsubmit="return validacionForm(event)">
     <h3>Formulario de inscripción</h3>
       <label for="dni" id="dni_label"></label>
-      <input  onfocusout="validarDNI()" class="dni" type="text" id="dni" name="dni" placeholder="DNI">
+      <input onfocusout="validarDNI()" class="dni" type="text" id="dni" name="dni" placeholder="DNI">
 
       <label for="nombre" id="nombre_label"></label>
       <input class="nombre" type="text" id="nombre" name="nombre" placeholder="Nombre">
@@ -42,7 +53,7 @@
       <input onfocusout="categoria()" class="fecha_nacimiento" type="date" id="fecha_nacimiento" name="fecha_nacimiento">
 
       <label for="sexo" id="sexo_label"></label>
-      <select onfocusout="categoria()" id="sexo" name="sexo">
+      <select  onfocusout="categoria()" id="sexo" name="sexo">
         <option disabled selected value=""> Selecciona un género </option>
         <option value="hombre">Hombre</option>
         <option value="mujer">Mujer</option>

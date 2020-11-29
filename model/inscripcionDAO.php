@@ -19,10 +19,51 @@ class inscripcionDAO{
         $mail = $_POST['mail'];
         $fecha_nacimiento = $_POST['fecha_nacimiento'];
         $sexo = $_POST['sexo'];
-        $categoria = $_POST['categoria'];
+
         $id_cursa = 1;
         $pagado = "No";
 
+        
+
+        $fecha= new DateTime($fecha_nacimiento);
+        $hoy = new DateTime();
+        $edad = $hoy->diff($fecha);
+        $edad = $edad->y;
+
+        if($edad >= '0' && $edad <='6' ){
+            $categoria = 1;
+        }
+        if($edad >= 6 && $edad <=12 ){
+            $categoria = 2;
+        }
+        if($edad >= 12 && $edad <=16 && $sexo == "hombre"){
+            $categoria = 3;
+        }
+        if($edad >= 16 && $edad <=45 && $sexo == "hombre"){
+            $categoria = 7;
+        }
+        if($edad >= 45 && $edad <=65 && $sexo == "hombre"){
+            $categoria = 11;
+        }
+        if($edad >= 65 && $edad <=1000 && $sexo == "hombre"){
+            $categoria = 15;
+        }
+    
+        if($edad >= 12 && $edad <=16 && $sexo == "mujer"){
+            $categoria = 4;
+        }
+        if($edad >= 16 && $edad <=45 && $sexo == "mujer"){
+            $categoria = 8;
+        }
+        if($edad >= 45 && $edad <=65 && $sexo == "mujer"){
+            $categoria = 12;
+        }
+        if($edad >= 65 && $edad <=1000 && $sexo == "mujer"){
+            $categoria = 17;
+        }
+        
+       
+        
         $query = "SELECT * FROM tbl_participante WHERE DNI_Participante=?";
         $sentencia=$this->pdo->prepare($query);
         $sentencia->bindParam(1,$dni);
