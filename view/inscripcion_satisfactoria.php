@@ -8,6 +8,7 @@
 
 <div class="satisfactorio">
 <h3 class="h3_inscripcion">Inscripción satisfactoria!!</h3>
+<div id="prueba"></div>
 <form class="form_satisfactorio" action="index.html">
         <label for="submit"></label>
         <input class="submit_satisfactorio" type="submit" value="Volver al inicio" />

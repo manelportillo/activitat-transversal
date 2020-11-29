@@ -1,104 +1,105 @@
 function usuarioExistente(){
-    document.getElementById("usuarioExistente").className = "usuarioExistenteVisible";
+    // alert("hola");
+    document.getElementById("usuarioExistente").className="usuarioExistenteVisible";
 }
 
-function validacionForm() {
-    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
-    var dni=document.getElementById('dni').value;
-    // var numDNI = parseInt(dni.substr(0,8),10);
-    var nombre=document.getElementById('nombre').value;
-    var primer_apellido=document.getElementById('primer_apellido').value;
-    var segundo_apellido=document.getElementById('segundo_apellido').value;
-    var mail=document.getElementById('mail').value;
-    var fecha_nacimiento=document.getElementById('fecha_nacimiento').value;
-    var sexo=document.getElementById('sexo').value;
-    var categoria=document.getElementById('categoria').value;
-    // alert(dni);
-    // alert(nombre);
-    // alert(primer_apellido);
-    // alert(segundo_apellido);
-    // alert(mail);
-    // alert(fecha_nacimiento);
-    // alert(sexo);
-    // alert(categoria);
-    if (dni == ''){      
-        document.getElementById('dni').style.border = "2px solid red";       
+function validacionForm(){
+    // alert('hola');
+
+    var inputs = document.getElementsByTagName("input");
+    var vali = true;
+    var cate = true;
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].type == 'text' && inputs[i].value == '') {
+            inputs[i].style.borderColor = 'red';
+            vali = false;
+            document.getElementById("mensaje2").innerHTML="<p>Faltan datos por introducir</p>";
+            document.getElementById("mensaje2").style.color="red";
+        } else if (inputs[i].type == 'email' && inputs[i].value == ''){
+            inputs[i].style.borderColor = 'red';
+            vali = false;
+            document.getElementById("mensaje2").innerHTML="<p>Faltan datos por introducir</p>";
+            document.getElementById("mensaje2").style.color="red";
+        } else if (inputs[i].type == 'date' && inputs[i].value == ''){
+            inputs[i].style.borderColor = 'red';
+            vali = false;
+            document.getElementById("mensaje2").innerHTML="<p>Faltan datos por introducir</p>";
+            document.getElementById("mensaje2").style.color="red";
+        } else {
+            inputs[i].style.borderColor = 'grey';
+            document.getElementById("mensaje2").innerHTML="<p>Faltan datos por introducir</p>";
+        }
+        // console.log(inputs[i].type);
     }
-    if(!(letras[dni.substr(0,8)%23]===dni.substr(-1,1))){
-        document.getElementById('dni').style.border = "2px solid red";
+        if (!validarDNI() || !vali) {
+            event.preventDefault()
         }
-    if(nombre == ""){
-        document.getElementById('nombre').style.border = "2px solid red";  
+        if (!categoria() || !cate) {
+            event.preventDefault()
         }
-    if(primer_apellido == ""){
-        document.getElementById('primer_apellido').style.border = "2px solid red";  
-        }
-    if(segundo_apellido == ""){
-        document.getElementById('segundo_apellido').style.border = "2px solid red";  
-        }
-    if(mail == ""){
-        document.getElementById('mail').style.border = "2px solid red";  
-        }
-    if(fecha_nacimiento ==""){
-        document.getElementById('fecha_nacimiento').style.border = "2px solid red";  
-        }
-    if( sexo == ""){
-        
-        document.getElementById('sexo').style.border = "2px solid red";  
-        }
-    if(categoria == ""){      
-        document.getElementById('categoria').style.border = "2px solid red";  
-    }
-    if (dni != ''){      
-        document.getElementById('dni').style.border = "2px solid grey";       
-    }
-    if(letras[dni.substr(0,8)%23]===dni.substr(-1,1)){
-        document.getElementById('dni').style.border = "2px solid grey";
-        }
-    if(nombre != ""){
-        document.getElementById('nombre').style.border = "2px solid grey";  
-        }
-    if(primer_apellido != ""){
-        document.getElementById('primer_apellido').style.border = "2px solid grey";  
-        }
-    if(segundo_apellido != ""){
-        document.getElementById('segundo_apellido').style.border = "2px solid grey";  
-        }
-    if(mail != ""){
-        document.getElementById('mail').style.border = "2px solid grey";  
-        }
-    if(fecha_nacimiento !=""){
-        document.getElementById('fecha_nacimiento').style.border = "2px solid grey";  
-        }
-    if( sexo != ""){
-        
-        document.getElementById('sexo').style.border = "2px solid grey";  
-        }
-    if(categoria != ""){      
-        document.getElementById('categoria').style.border = "2px solid grey";  
-    }
-    if (dni == "" || nombre == "" || primer_apellido == "" || segundo_apellido == "" || mail == "" || fecha_nacimiento == "" || sexo == "" || categoria == ""){
-        document.getElementById('dni_label').innerHTML="<p>Falta introducir datos</p>";
-        document.getElementById('dni_label').style.color="red";
-        return false;
-    }else if(!(letras[dni.substr(0,8)%23]===dni.substr(-1,1))){
-        document.getElementById('dni_label').innerHTML="<p>DNI Incorrecto</p>";
-        document.getElementById('dni_label').style.color="red";
-        return false;
-    }else{
-        return true;
-    }
     
 }
 
-function validarForm() {
-    var inputs = document.getElementsByTagName("input");
-    for (let i = 0; i < inputs.length; i++) {
-        if(inputs[i].type == 'text' && inputs[i].value == ""){
-            inputs[i].style.borderColor="red";
-        }else{
-            inputs[i].style.borderColor="grey";
-        }
+function categoria(){
+        
+    var fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+    // console.log(fecha_nacimiento);
+
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha_nacimiento);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
     }
-    return false;
+
+    var categoria = document.getElementById("sexo").value;
+
+    console.log(categoria);
+    if(edad >= 0 && edad <=6 ){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 0-6 Años Niños/Niñas</p>";
+    }
+    if(edad >= 6 && edad <=12 ){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 6-12 Años Niños/Niñas</p>";
+    }
+    if(edad >= 12 && edad <=16 && categoria == "hombre"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 12-16 Años Hombre</p>";
+    }
+    if(edad >= 16 && edad <=45 && categoria == "hombre"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 16-45 Años Hombre</p>";
+    }
+    if(edad >= 45 && edad <=65 && categoria == "hombre"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 45-65 Años Hombre</p>";
+    }
+    if(edad >= 65 && edad <=1000 && categoria == "hombre"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: Mayor 65 Años Hombre</p>";
+    }
+
+    if(edad >= 12 && edad <=16 && categoria == "mujer"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 12-16 Años Mujer</p>";
+    }
+    if(edad >= 16 && edad <=45 && categoria == "mujer"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 16-45 Años Mujer</p>";
+    }
+    if(edad >= 45 && edad <=65 && categoria == "mujer"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: 45-65 Años Mujer</p>";
+    }
+    if(edad >= 65 && edad <=1000 && categoria == "mujer"){
+        document.getElementById("mensaje3").innerHTML= "<p>Categoria: Mayor 65 Años Mujer</p>";
+    }
+
+}
+
+
+function validarDNI() {
+    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+    var dni=document.getElementById('dni').value;
+    if(!(letras[dni.substr(0,8)%23]===dni.substr(-1,1))){
+        document.getElementById('dni').style.border = "1px solid red";
+        document.getElementById("mensaje1").innerHTML="<p>DNI Incorrecto</p>";
+        document.getElementById("mensaje1").style.color="red";
+    }
+    console.log("pierde el foco");
+    
 }

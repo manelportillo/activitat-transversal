@@ -19,16 +19,12 @@
   </a>
   </div>      
 </div>
-<?php
-require_once '../model/inscripcionDAO.php';
-
-?>
 <div>
   <img class="imgCorredor" src="../images/corredor.png"> 
     <form action="inscripcion.php" method="POST" onsubmit="return validacionForm()">
     <h3>Formulario de inscripción</h3>
       <label for="dni" id="dni_label"></label>
-      <input class="dni" type="text" id="dni" name="dni" placeholder="DNI">
+      <input  onfocusout="validarDNI()" class="dni" type="text" id="dni" name="dni" placeholder="DNI">
 
       <label for="nombre" id="nombre_label"></label>
       <input class="nombre" type="text" id="nombre" name="nombre" placeholder="Nombre">
@@ -43,32 +39,21 @@ require_once '../model/inscripcionDAO.php';
       <input class="mail" type="email" id="mail" name="mail" placeholder="Email">
 
       <label for="fecha_nacimiento" id="fecha_nacimiento_label"></label>
-      <input class="fecha_nacimiento" type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+      <input onfocusout="categoria()" class="fecha_nacimiento" type="date" id="fecha_nacimiento" name="fecha_nacimiento">
 
       <label for="sexo" id="sexo_label"></label>
-      <select id="sexo" name="sexo">
+      <select onfocusout="categoria()" id="sexo" name="sexo">
         <option disabled selected value=""> Selecciona un género </option>
         <option value="hombre">Hombre</option>
         <option value="mujer">Mujer</option>
       </select>
 
-      <label for="categoria" id="categoria_label"></label>
-      <select id="categoria" name="categoria">
-        <option disabled selected value=""> Selecciona una categoria</option>
-        <?php
-        require_once '../model/conexion.php';
-        $query="SELECT ID_Categoria, Nombre_Categoria FROM tbl_categoria";
-        $sentencia=$pdo->prepare($query);
-        $sentencia->execute();
-        $lista_categorias=$sentencia->fetchAll(PDO::FETCH_ASSOC);    
-        foreach ($lista_categorias as $categoria){
-          echo  '<option value="'.$categoria['ID_Categoria'].'">'.$categoria['Nombre_Categoria'].'</option>'; 
-        }
-        ?>
-      </select>
       <input type="submit" value="Inscribirse" id="error">
-      <div id="mensaje"></div>
+      <div id="mensaje1"></div>
+      <div id="mensaje2"></div>
+      <div id="mensaje3"></div>
       <p id="usuarioExistente" class="usuarioExistente"> El usuario ya está inscrito </p>
+      
     </form>
 </div>
 
@@ -139,12 +124,13 @@ require_once '../model/inscripcionDAO.php';
      }
      </script>
 </body>
+
+
 <?php
-$inscripcionDAO=new inscripcionDAO();
-if (isset($_POST['dni'])){
-  $inscripcionDAO->inscribirse();
-}
+
+
 if (isset($_GET["variable1"])){
+
   echo '<script> usuarioExistente(); </script>';
 }
 ?>
