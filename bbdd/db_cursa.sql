@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2020 a las 12:56:20
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Tiempo de generación: 30-11-2020 a las 17:17:34
+-- Versión del servidor: 10.4.16-MariaDB
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_cursa`
 --
+CREATE DATABASE IF NOT EXISTS `db_cursa` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_cursa`;
 
 -- --------------------------------------------------------
 
@@ -42,20 +44,16 @@ CREATE TABLE `tbl_categoria` (
 INSERT INTO `tbl_categoria` (`ID_Categoria`, `Nombre_Categoria`, `Sexo_Categoria`, `Edad_Minima`, `Edad_Maxima`) VALUES
 (1, '0-6 Años', 'Niños/niñas', 0, 6),
 (2, '6-12 Años', 'Niños/niñas', 6, 12),
-(3, '12-14 Años Hombre', 'Hombre', 12, 14),
-(4, '12-14 Años Mujer', 'Mujer', 12, 14),
-(5, '14-16 Años Hombre', 'Hombre', 14, 16),
-(6, '14-16 Años Mujer', 'Mujer', 14, 16),
-(7, '16-20 Años Hombre', 'Hombre', 16, 20),
-(8, '16-20 Años Mujer', 'Mujer', 16, 20),
-(9, '20-45 Años Hombre', 'Hombre', 20, 45),
-(10, '20-45 Años Mujer', 'Mujer', 20, 45),
-(11, '45-55 Años Hombre', 'Hombre', 45, 55),
-(12, '45-55 Años Mujer', 'Mujer', 45, 55),
-(13, '55-65 Años Hombre', 'Hombre', 55, 65),
-(14, '55-65 Años Mujer', 'Mujer', 55, 65),
+(3, '12-16 Años Hombre', 'Hombre', 12, 16),
+(4, '12-16 Años Mujer', 'Mujer', 12, 14),
+(7, '16-45 Años Hombre', 'Hombre', 16, 45),
+(8, '16-45 Años Mujer', 'Mujer', 16, 45),
+(11, '45-65 Años Hombre', 'Hombre', 45, 65),
+(12, '45-65 Años Mujer', 'Mujer', 45, 65),
 (15, 'Mayor 65 Hombre', 'Hombre', 65, 120),
-(16, 'Mayor 65 Hombre', 'Mujer', 65, 120);
+(16, 'Mayor 65 Hombre', 'Mujer', 65, 120),
+(17, 'Discapacitado Mujer', 'Mujer', 3, 100),
+(18, 'Discapacitado Hombre', 'Hombre', 3, 100);
 
 -- --------------------------------------------------------
 
@@ -89,13 +87,6 @@ CREATE TABLE `tbl_inscripcion` (
   `ID_Cursa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
---
--- Volcado de datos para la tabla `tbl_inscripcion`
---
-
-INSERT INTO `tbl_inscripcion` (`Dorsal`, `Pagado`, `ID_Participante`, `ID_Cursa`) VALUES
-(14, 'No', 18, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -113,13 +104,6 @@ CREATE TABLE `tbl_participante` (
   `DNI_Participante` varchar(9) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `email_participante` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
---
--- Volcado de datos para la tabla `tbl_participante`
---
-
-INSERT INTO `tbl_participante` (`ID_Participante`, `Nombre_Participante`, `Primer_apellido`, `Segundo_apellido`, `Sexo_Participante`, `Fecha_Nacimiento_Participante`, `ID_Categoria`, `DNI_Participante`, `email_participante`) VALUES
-(18, 'Manel', 'Portillo', 'Martinez', 'Hombre', '2020-10-31', 3, '48070198Z', 'manelportillo13@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -160,7 +144,7 @@ ALTER TABLE `tbl_participante`
 -- AUTO_INCREMENT de la tabla `tbl_categoria`
 --
 ALTER TABLE `tbl_categoria`
-  MODIFY `ID_Categoria` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_Categoria` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cursa`
@@ -172,13 +156,13 @@ ALTER TABLE `tbl_cursa`
 -- AUTO_INCREMENT de la tabla `tbl_inscripcion`
 --
 ALTER TABLE `tbl_inscripcion`
-  MODIFY `Dorsal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Dorsal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_participante`
 --
 ALTER TABLE `tbl_participante`
-  MODIFY `ID_Participante` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_Participante` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
